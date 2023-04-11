@@ -1,13 +1,15 @@
-
+import { Header } from './components/header/header';
+import { Footer } from './components/footer/footer';
+import { Main } from './components/main/main';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-
-      </header>
-    </div>
+    <>
+      <Header/>
+      <Main/>
+      <Footer/>
+    </>
   );
 }
 
