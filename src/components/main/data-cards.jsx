@@ -1,6 +1,7 @@
 import React from 'react'
 import { CardItem } from './itemCard/item';
 import './data-cards.css'
+import { Preloader } from '../preloader/preloader';
 
 class CardsData extends React.Component {
   constructor(props){
@@ -11,11 +12,11 @@ class CardsData extends React.Component {
   }
 
   handleGetUrl = async() => {
-    const url = 'http://www.omdbapi.com/?apikey=c56e662a&s=matrix&page=1'
+    const url = 'http://www.omdbapi.com/?apikey=c56e662a&s=star wars&page=1'
     try {
       const res = await fetch(url)
       const data = await res.json();
-      this.setState({card: data.Search}) // записал в стейт все карточки в массив
+      this.setState({card: data.Search}) 
     }
     catch(err){
       console.log(err)
@@ -25,28 +26,21 @@ class CardsData extends React.Component {
     }
   }
 
-  handleShowCard = () =>{
-    this.setState(console.log())
-    
-  }
-
-
   componentDidMount(){
     this.handleGetUrl()
-    this.handleShowCard()
   }
 
   render() {
-   return <div className='items-wrapper'>
-    {this.state.card.map(item => <div>
-      <CardItem 
-        Title={item.Title}
+   return <div className='items-wrapper'>{
+    this.state.card.length ? this.state.card.map(item => <div key={item.imdbID}>
+      <CardItem {...item} // спред заменяет закомментированный код ниже
+        /*Title={item.Title}
         Poster={item.Poster}
         Type={item.Type}
-        Year={item.Year}
-        Id={item.imdbID}
+        Year={item.Year}*/
         />
-      </div>)}
+      </div>): <Preloader/>
+    }
    </div>
   }
 }
