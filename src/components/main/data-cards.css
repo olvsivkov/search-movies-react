@@ -1,0 +1,16 @@
+.items-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: stretch;
+  align-items: stretch;
+}
+
+
+@media only screen and (min-width: 601px){
+  #cards-height{
+    width: 100%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+  }
+}
