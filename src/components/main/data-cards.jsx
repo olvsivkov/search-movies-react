@@ -2,6 +2,7 @@ import React from 'react'
 import { CardItem } from './itemCard/item';
 import './data-cards.css'
 import { Preloader } from '../preloader/preloader';
+import { Search } from '../search/search';
 
 class CardsData extends React.Component {
   constructor(props){
@@ -11,10 +12,9 @@ class CardsData extends React.Component {
     };
   }
 
-  handleGetUrl = async() => {
-    const url = 'http://www.omdbapi.com/?apikey=c56e662a&s=star wars&page=1'
+  searchMovie = async(arg) => {
     try {
-      const res = await fetch(url)
+      const res = await fetch(`http://www.omdbapi.com/?apikey=c56e662a&s=${arg}&page=1`)
       const data = await res.json();
       this.setState({card: data.Search}) 
     }
@@ -26,21 +26,20 @@ class CardsData extends React.Component {
     }
   }
 
-  componentDidMount(){
-    this.handleGetUrl()
-  }
-
   render() {
-   return <div className='items-wrapper'>{
-    this.state.card.length ? this.state.card.map(item => <div key={item.imdbID}>
-      <CardItem {...item} // спред заменяет закомментированный код ниже
-        /*Title={item.Title}
-        Poster={item.Poster}
-        Type={item.Type}
-        Year={item.Year}*/
-        />
-      </div>): <Preloader/>
-    }
+   return <div>
+    <Search searchMovie={this.searchMovie}/>
+    <div className='items-wrapper'>{
+      this.state.card.length ? this.state.card.map(item => <div key={item.imdbID}>
+        <CardItem {...item} // спред заменяет закомментированный код ниже
+          /*Title={item.Title}
+          Poster={item.Poster}
+          Type={item.Type}
+          Year={item.Year}*/
+          />
+        </div>): <Preloader/>
+      }
+    </div>
    </div>
   }
 }
