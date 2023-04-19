@@ -3,6 +3,7 @@ import { CardItem } from './itemCard/item';
 import './data-cards.css'
 import { Preloader } from '../preloader/preloader';
 import { Search } from '../search/search';
+import { RadioButtonFilter } from '../check-box/check-box';
 
 class CardsData extends React.Component {
   constructor(props){
@@ -29,6 +30,7 @@ class CardsData extends React.Component {
   render() {
    return <div>
     <Search searchMovie={this.searchMovie}/>
+    <RadioButtonFilter/>
     <div className='items-wrapper'>{
       this.state.card.length ? this.state.card.map(item => <div key={item.imdbID}>
         <CardItem {...item} // спред заменяет закомментированный код ниже

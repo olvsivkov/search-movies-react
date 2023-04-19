@@ -1,4 +1,5 @@
 import React from 'react'
+import './search.css'
 
 class Search extends React.Component {
   constructor(props){
@@ -16,16 +17,16 @@ class Search extends React.Component {
   render() {
     const {searchMovie} = this.props
     return  <div className="row">
-    <div className="input-field col s12">
+    <div className="input-field col s12 search-movies">
       <input 
-        className="validate"
+        className="validate input-search"
         placeholder='Search'
         id="text"
         type="text"
         value= {this.state.search}
         onChange={this.handleSearch}
       />
-      <span><button className="waves-effect waves-light btn-large" onClick={() => searchMovie(this.state.search)}>Search</button></span>
+      <button className="waves-effect waves-light btn-large" onClick={() => searchMovie(this.state.search)}>Search</button>
     </div>
   </div>
   }
