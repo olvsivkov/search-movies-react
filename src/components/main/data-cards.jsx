@@ -3,21 +3,24 @@ import { CardItem } from './itemCard/item';
 import './data-cards.css'
 import { Preloader } from '../preloader/preloader';
 import { Search } from '../search/search';
-import { RadioButtonFilter } from '../check-box/check-box';
+const API_KEY = process.env.REACT_APP_API_KEY
+
 
 class CardsData extends React.Component {
   constructor(props){
     super(props)
     this.state = {
       card: [],
+      loading: true,
     };
   }
 
-  searchMovie = async(arg) => {
+  searchMovie = async(movieTitle, movieType) => {
     try {
-      const res = await fetch(`http://www.omdbapi.com/?apikey=c56e662a&s=${arg}&page=1`)
+      this.setState({loading: true})
+      const res = await fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${movieTitle}&page=1&type=${movieType}`)
       const data = await res.json();
-      this.setState({card: data.Search}) 
+      this.setState({card: data.Search, loading: false}) 
     }
     catch(err){
       console.log(err)
@@ -28,18 +31,15 @@ class CardsData extends React.Component {
   }
 
   render() {
+    const data = this.state.card
    return <div>
     <Search searchMovie={this.searchMovie}/>
-    <RadioButtonFilter/>
+    
     <div className='items-wrapper'>{
-      this.state.card.length ? this.state.card.map(item => <div key={item.imdbID}>
-        <CardItem {...item} // спред заменяет закомментированный код ниже
-          /*Title={item.Title}
-          Poster={item.Poster}
-          Type={item.Type}
-          Year={item.Year}*/
-          />
-        </div>): <Preloader/>
+      this.state.loading ? <Preloader/> : data ? data.map(item => <div key={item.imdbID}>
+        <CardItem {...item}/>
+        </div>) : <h4>Nothing found</h4>
+      
       }
     </div>
    </div>

@@ -1,8 +1,12 @@
 .search-movies {
   display: grid;
-  grid-template-columns: 5fr 1fr;
+  grid-template-columns: 4fr 2fr;
 }
 
 .input-search {
-  width: 95%;
+  width: 65%;
+}
+
+.radio-buttons {
+  padding: 0 2rem 0 0;
 }
