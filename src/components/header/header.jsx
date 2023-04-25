@@ -3,9 +3,9 @@ import './header.css'
 function Header() {
   return   <nav>
     <div className="nav-wrapper nav-bar amber darken-3">
-      <a href="#" className="brand-logo">Movies</a>
+      <span className="brand-logo">Movies</span>
       <ul id="nav-mobile" className="right hide-on-med-and-down">
-        <li><a href="#">Repo</a></li>
+        <li><a href="https://github.com/olvsivkov" target='blank'>Github</a></li>
       </ul>
     </div>
   </nav>

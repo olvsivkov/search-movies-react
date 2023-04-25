@@ -20,7 +20,10 @@ class Search extends React.Component {
       {
         [event.target.name]: event.target.value,
       })
+  }
 
+  handleKey = (event) => {
+    if(event.key === 'Enter') this.props.searchMovie(this.state.search, this.state.movies)
   }
 
   render() {
@@ -34,6 +37,7 @@ class Search extends React.Component {
           type="text"
           value= {this.state.search}
           onChange={this.handleSearch}
+          onKeyDown={this.handleKey}
         />
         <div>
         <label className='radio-buttons'>
@@ -65,7 +69,9 @@ class Search extends React.Component {
         </label>
       </div>
     </div>
-    <button className="waves-effect waves-light btn-large" onClick={() => searchMovie(this.state.search, this.state.movies)}>Search</button>
+    <button 
+      className="waves-effect waves-light btn-large btn-margin" 
+      onClick={() => searchMovie(this.state.search, this.state.movies)}>Search</button>
   </div>
   }
 

@@ -3,6 +3,7 @@ import { CardItem } from './itemCard/item';
 import './data-cards.css'
 import { Preloader } from '../preloader/preloader';
 import { Search } from '../search/search';
+import { getRandomMoviesTitle } from '../randomMoviesTitle/randomMoviesTitle';
 const API_KEY = process.env.REACT_APP_API_KEY
 
 
@@ -15,7 +16,7 @@ class CardsData extends React.Component {
     };
   }
 
-  searchMovie = async(movieTitle, movieType) => {
+  searchMovie = async(movieTitle, movieType = '') => {
     try {
       this.setState({loading: true})
       const res = await fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${movieTitle}&page=1&type=${movieType}`)
@@ -28,6 +29,10 @@ class CardsData extends React.Component {
     finally {
       console.log('fetch function is finished')
     }
+  }
+
+  componentDidMount(){
+    this.searchMovie(getRandomMoviesTitle())
   }
 
   render() {
