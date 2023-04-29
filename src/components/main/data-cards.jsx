@@ -14,9 +14,10 @@ class CardsData extends React.Component {
       card: [],
       loading: true,
     };
+    this.searchMovie = this.searchMovie.bind(this)
   }
 
-  searchMovie = async(movieTitle, movieType = '') => {
+  async searchMovie(movieTitle, movieType = ''){
     try {
       this.setState({loading: true})
       const res = await fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${movieTitle}&page=1&type=${movieType}`)
@@ -32,8 +33,12 @@ class CardsData extends React.Component {
   }
 
   componentDidMount(){
-    this.searchMovie(getRandomMoviesTitle())
+    const movieTitle = sessionStorage.getItem('movieTitle')
+    const movieType = sessionStorage.getItem('movieType')
+    if(movieTitle) {this.searchMovie(movieTitle, movieType)}
+    else {this.searchMovie(getRandomMoviesTitle())} 
   }
+ 
 
   render() {
     const data = this.state.card

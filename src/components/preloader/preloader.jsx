@@ -1,13 +1,9 @@
+import './preloader.css'
+
 export function Preloader() {
-  return  <div className="preloader-wrapper active">
-    <div className="spinner-layer spinner-red-only">
-      <div className="circle-clipper left">
-        <div className="circle"></div>
-      </div><div className="gap-patch">
-        <div className="circle"></div>
-      </div><div className="circle-clipper right">
-        <div className="circle"></div>
+  return <div className='position-centre'>
+      <div className="progress">
+          <div className="indeterminate"></div>
       </div>
     </div>
-  </div>
 }
