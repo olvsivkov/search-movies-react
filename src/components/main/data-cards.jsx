@@ -20,12 +20,13 @@ class CardsData extends React.Component {
   async searchMovie(movieTitle = '', movieType = ''){
     try {
       this.setState({loading: true})
-      const res = await fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${movieTitle}&type=${movieType}`)
+      const res = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${movieTitle}&type=${movieType}`)
       const data = await res.json();
       this.setState({card: data.Search, loading: false}) 
     }
     catch(err){
-      console.log(err)
+      console.error(err)
+      this.setState({loading: false})
     }
     finally {
       console.log('fetch function is finished')
