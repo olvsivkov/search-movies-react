@@ -17,10 +17,10 @@ class CardsData extends React.Component {
     this.searchMovie = this.searchMovie.bind(this)
   }
 
-  async searchMovie(movieTitle, movieType = ''){
+  async searchMovie(movieTitle = '', movieType = ''){
     try {
       this.setState({loading: true})
-      const res = await fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${movieTitle}&page=1&type=${movieType}`)
+      const res = await fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${movieTitle}&type=${movieType}`)
       const data = await res.json();
       this.setState({card: data.Search, loading: false}) 
     }

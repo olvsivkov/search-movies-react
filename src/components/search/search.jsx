@@ -34,7 +34,7 @@ class Search extends React.Component {
   handleChange = (event) => { // метод, чтоб записывать данные в state из формы. [] - нужны, чтоб понимать name в котором происходит событие
     //
     const selectedOption = event.target.value;
-    localStorage.setItem('selectedOption', selectedOption);
+    sessionStorage.setItem('selectedOption', selectedOption);
     //
     this.setState(
       {
@@ -68,11 +68,11 @@ class Search extends React.Component {
           placeholder='Search'
           id="text"
           type="text"
-          value= {this.state.search}
+          value= {this.state.search || ''}
           onChange={this.handleSearch}
           onKeyDown={this.handleKey}
         />
-        <div>
+        <div className='radiobuttons-wrapper'>
           
         <label className='radio-buttons'>
           <input 
@@ -128,7 +128,6 @@ class Search extends React.Component {
     </button>
   </div>
   }
-
 }
 
 export {Search}

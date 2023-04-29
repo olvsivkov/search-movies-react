@@ -2,7 +2,7 @@ import React from 'react'
 import '../data-cards.css'
 
 export function CardItem(props) {
-  const {Title, Poster, Type, Year, } = props;
+  const {Title, Poster, Type, Year} = props;
   return <div className="row">
     <div id='cards-height' className="col s12 m7 ">
       <div className="card">
