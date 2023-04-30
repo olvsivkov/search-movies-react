@@ -22,7 +22,8 @@ class CardsData extends React.Component {
       this.setState({loading: true})
       const res = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${movieTitle}&type=${movieType}`)
       const data = await res.json();
-      this.setState({card: data.Search, loading: false}) 
+      const filteredData = data.Search.filter(item => item.Poster !== 'N/A')
+      this.setState({card: filteredData, loading: false}) 
     }
     catch(err){
       console.error(err)

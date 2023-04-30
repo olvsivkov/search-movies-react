@@ -6,8 +6,8 @@ class Search extends React.Component {
     super(props)
 
     this.state = {
-      search: '',
-      movies: '',
+      search: [],
+      movies: [],
       //
       selectedOption: sessionStorage.getItem('selectedOption') || '',
       //
@@ -19,11 +19,12 @@ class Search extends React.Component {
   }
 
   componentDidMount(){
+    const emptyLine = ''
     const movieTitle = sessionStorage.getItem('movieTitle') 
     const movieType = sessionStorage.getItem('movieType') 
     this.setState({
-      search: movieTitle,
-      movies: movieType,
+      search: movieTitle === 'null' ? emptyLine : movieTitle,
+      movies: movieType === 'null' ? emptyLine : movieType,
     })
   }
  
@@ -68,7 +69,7 @@ class Search extends React.Component {
           placeholder='Search'
           id="text"
           type="text"
-          value= {this.state.search || ''}
+          value= {this.state.search} 
           onChange={this.handleSearch}
           onKeyDown={this.handleKey}
         />
