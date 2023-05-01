@@ -21,3 +21,11 @@
   justify-content: center;
   align-content: center;
 }
+
+@media (max-width: 600px) {
+  .search-movies{
+    grid-template-columns: none;
+    grid-template-rows: 1fr 1fr;
+  }
+}
+

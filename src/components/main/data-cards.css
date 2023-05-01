@@ -3,6 +3,7 @@
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   justify-items: stretch;
   align-items: stretch;
+  gap: 1rem;
 }
 
 
@@ -13,4 +14,38 @@
     left: auto;
     right: auto;
   }
+}
+
+.font {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: normal;
+}
+
+.more {
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-style: normal;
+  cursor: pointer;
+  color: rgb(120 88 26);
+}
+
+.type-year-wrapper{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: stretch;
+  align-items: stretch;
+  gap: 1rem;
+  margin-bottom: 5%;
+}
+
+.bg-color-content {
+  background-color: rgb(243, 238, 238) !important;
+}
+
+.face-card-wrapper{
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+}
+
+.title-font{
+  font-weight: 500 !important;
 }

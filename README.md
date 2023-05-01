@@ -8,7 +8,9 @@ This project use:
 
 When project is start you will see poster of random movies. 
 You can search movie on his title and then filter movie or series. 
-Also your movie title, which you writed into search input, and your choosing movie/series are saving in sessionStorage. 
+Your movie title, which you writed into search input, and your choosing movie/series are saving in sessionStorage. 
+Also you can click on movie poster or link "more information" and will see movie plot description, director and raiting. 
+This site created as adaptive fo all gadgets   
 
 _________________________________________________________________________
 
@@ -22,4 +24,6 @@ _________________________________________________________________________
 
 Когда проект запустится, вы увидите постеры случайных фильмов.
 Вы можете выполнить поиск фильма по его названию, а затем отфильтровать фильм или сериал.
-Также название вашего фильма, которое вы ввели в поле поиска, и выбранный вами фильм / сериал, сохраняются в sessionStorage.
+Название вашего фильма, которое вы ввели в поле поиска, и выбранный вами фильм / сериал, сохраняются в sessionStorage.
+Также вы можете нажать на афишу фильма или ссылку "more information" и увидеть описание сюжета фильма, режиссера и рейтинг.
+Этот сайт создан как адаптивный для всех гаджетов

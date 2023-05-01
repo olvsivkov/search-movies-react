@@ -64,15 +64,17 @@ class Search extends React.Component {
     const {searchMovie} = this.props
     return  <div className="row">
       <div className="input-field col s12 search-movies">
-        <input 
-          className="validate input-search"
-          placeholder='Search'
-          id="text"
-          type="text"
-          value= {this.state.search} 
-          onChange={this.handleSearch}
-          onKeyDown={this.handleKey}
-        />
+        <div>
+          <input 
+            className="validate input-search"
+            placeholder='Search'
+            id="text"
+            type="text"
+            value= {this.state.search} 
+            onChange={this.handleSearch}
+            onKeyDown={this.handleKey}
+          />
+        </div>
         <div className='radiobuttons-wrapper'>
           
         <label className='radio-buttons'>

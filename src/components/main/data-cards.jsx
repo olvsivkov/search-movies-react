@@ -15,6 +15,7 @@ class CardsData extends React.Component {
       loading: true,
     };
     this.searchMovie = this.searchMovie.bind(this)
+
   }
 
   async searchMovie(movieTitle = '', movieType = ''){
@@ -41,17 +42,15 @@ class CardsData extends React.Component {
     else {this.searchMovie(getRandomMoviesTitle())} 
   }
  
-
   render() {
     const data = this.state.card
    return <div>
     <Search searchMovie={this.searchMovie}/>
     
     <div className='items-wrapper'>{
-      this.state.loading ? <Preloader/> : data ? data.map(item => <div key={item.imdbID}>
-        <CardItem {...item}/>
-        </div>) : <h4>Nothing found</h4>
-      
+      this.state.loading ? <Preloader/> : (
+        data ? data.map(item => <CardItem key={item.imdbID} {...item}/>): <h4>Nothing found</h4>
+        )
       }
     </div>
    </div>
