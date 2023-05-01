@@ -1,5 +1,7 @@
 # Project React movie search
 
+project link deploy: (https://olvsivkov.github.io/search-movies-react/)
+
 This project use: 
  - React js, 
  - [Materializecss library](https://materializecss.com/about.html)
@@ -15,6 +17,8 @@ This site created as adaptive fo all gadgets
 _________________________________________________________________________
 
 # Проект поиск фильмов React
+
+ссылка на проект: (https://olvsivkov.github.io/search-movies-react/)
 
 В этом проекте используется:
 - React js,
