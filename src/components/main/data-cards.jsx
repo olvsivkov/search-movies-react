@@ -11,7 +11,7 @@ class CardsData extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      card: [],
+      card: '',
       loading: true,
     };
     this.searchMovie = this.searchMovie.bind(this)
@@ -23,7 +23,8 @@ class CardsData extends React.Component {
       this.setState({loading: true})
       const res = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${movieTitle}&type=${movieType}`)
       const data = await res.json();
-      const filteredData = data.Search.filter(item => item.Poster !== 'N/A')
+      const filteredData = data.Search
+     // const filteredData = data.Search.filter(item => item.Poster !== 'N/A')
       this.setState({card: filteredData, loading: false}) 
     }
     catch(err){
@@ -38,7 +39,7 @@ class CardsData extends React.Component {
   componentDidMount(){
     const movieTitle = sessionStorage.getItem('movieTitle')
     const movieType = sessionStorage.getItem('movieType')
-    if(movieTitle) {this.searchMovie(movieTitle, movieType)}
+    if(movieTitle)this.searchMovie(movieTitle, movieType)
     else {this.searchMovie(getRandomMoviesTitle())} 
   }
  
@@ -48,9 +49,7 @@ class CardsData extends React.Component {
     <Search searchMovie={this.searchMovie}/>
     
     <div className='items-wrapper'>{
-      this.state.loading ? <Preloader/> : (
-        data ? data.map(item => <CardItem key={item.imdbID} {...item}/>): <h4>Nothing found</h4>
-        )
+      this.state.loading ? <Preloader/> : data ? data.map(item => item.Poster !== "N/A" ? <CardItem key={item.imdbID} {...item}/>: "") : <h4>Nothing found</h4>  
       }
     </div>
    </div>
